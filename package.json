@@ -1,0 +1,58 @@
+{
+  "name": "k-mathsnip",
+  "version": "0.1.0",
+  "description": "K-MathSnip: formula snipping tool with local Pix2Text MFR, native Word equation paste, and optional PaddleOCR. Built on the open-source OpenMathpix project (MIT) by JhuoW — see THIRD_PARTY_NOTICES.md.",
+  "main": "./out/main/index.js",
+  "author": {
+    "name": "Kevin Bastin",
+    "url": "https://github.com/KevinLeve/k-doc-pdfscanner"
+  },
+  "license": "MIT",
+  "scripts": {
+    "dev": "electron-vite dev",
+    "build": "electron-vite build",
+    "package": "electron-vite build && electron-builder",
+    "lint": "eslint .",
+    "format:check": "prettier --check src tests *.json *.ts *.mjs",
+    "typecheck": "tsc --noEmit -p tsconfig.node.json && tsc --noEmit -p tsconfig.web.json",
+    "test": "tsc -p tsconfig.test.json && node --test .test-dist/tests/*.test.js",
+    "check": "npm run typecheck && npm run lint && npm test && npm run build"
+  },
+  "dependencies": {
+    "axios": "^1.7.0",
+    "electron-store": "^8.2.0",
+    "electron-updater": "^6.8.11",
+    "katex": "^0.16.0",
+    "onnxruntime-node": "1.31.1",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
+    "react-markdown": "^10.0.0",
+    "rehype-katex": "^7.0.0",
+    "remark-math": "^6.0.0",
+    "sharp": "0.35.5",
+    "zustand": "^5.0.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.5",
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.7.0",
+    "autoprefixer": "^10.4.0",
+    "electron": "^41.0.0",
+    "electron-builder": "^26.0.0",
+    "electron-vite": "^4.0.0",
+    "eslint": "^9.0.0",
+    "postcss": "^8.4.0",
+    "prettier": "^3.3.0",
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5.5.0",
+    "typescript-eslint": "^8.72.1"
+  },
+  "allowScripts": {
+    "electron@41.10.7": true,
+    "electron-winstaller@5.4.0": true,
+    "esbuild@0.25.12": true,
+    "esbuild@0.28.2": true,
+    "onnxruntime-node@1.31.1": true
+  }
+}

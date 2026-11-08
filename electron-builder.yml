@@ -1,0 +1,37 @@
+appId: com.kdoctools.kmathsnip
+productName: K-MathSnip
+publish:
+  provider: github
+  owner: KevinLeve
+  repo: k-mathsnip
+directories:
+  buildResources: build
+  output: dist
+files:
+  - out/**/*
+  - THIRD_PARTY_NOTICES.md
+asarUnpack:
+  - node_modules/onnxruntime-node/bin/**/*
+  - node_modules/@img/**/*
+  - node_modules/sharp/**/*
+afterPack: scripts/after-pack.cjs
+extraResources:
+  - from: build/icon.png
+    to: icon.png
+  - from: resources/mfr-model
+    to: mfr-model
+linux:
+  target:
+    - AppImage
+    - deb
+  category: Utility
+mac:
+  target:
+    - dmg
+    - zip
+  category: public.app-category.utilities
+win:
+  icon: build/icon.ico
+  target:
+    - nsis
+    - portable

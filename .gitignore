@@ -1,0 +1,15 @@
+node_modules/
+out/
+dist/
+docs/
+*.log
+.DS_Store
+Thumbs.db
+.test-dist/
+*.tsbuildinfo
+__pycache__/
+*.pyc
+
+# Bundled MFR model weights (~120MB): not source, kept out of git history. Required locally
+# before `npm run package` — populate from a hash-validated download (see README).
+resources/mfr-model/
