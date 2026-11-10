@@ -20,6 +20,8 @@ extraResources:
     to: icon.png
   - from: resources/mfr-model
     to: mfr-model
+  - from: resources/word-addin
+    to: word-addin
 linux:
   target:
     - AppImage

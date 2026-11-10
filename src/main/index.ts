@@ -20,6 +20,7 @@ import { disposeMfr, getMfrStatus, prepareMfrModel, prepareClearMfrModel } from 
 import { createSettingsService } from './settings-service';
 import { createWindowCloseHandler } from './window-close';
 import { checkForUpdatesQuietly } from './updater';
+import { installMathTypeAddin } from './word-addin';
 import {
   createApplicationMenuTemplate,
   createCloseDialogOptions,
@@ -227,6 +228,7 @@ app.whenReady().then(() => {
   registerGlobalShortcut();
   applyTheme();
   checkForUpdatesQuietly();
+  installMathTypeAddin();
   // Warm the bundled/saved model's status cache so the first Settings/Snip screen doesn't show
   // a transient "checking" state.
   void getMfrStatus().catch(() => {

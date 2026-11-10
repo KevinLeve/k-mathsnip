@@ -74,6 +74,25 @@ plain LaTeX instead and tells you why — it never guesses or ships something si
   <img src="instruct/result.png" width="100%"/>
 </div>
 
+### Converting to a real MathType object
+
+If [MathType](https://www.wiris.com/en/mathtype/) itself is installed, you can turn the pasted
+equation into an actual MathType OLE object (not just a Word-native equation) with one shortcut:
+
+1. Paste the equation into Word as usual (**Ctrl+V**).
+2. Press **Ctrl+Shift+M**.
+
+The equation is silently converted in place — no dialogs, no manual steps. This works via a small
+Word add-in (`KMathSnip-MathType.dotm`) that K-MathSnip installs automatically into Word's
+add-in folder on first launch; it only activates MathType's own built-in conversion command, it
+does not implement or guess at MathType's file format itself.
+
+**One-time setup:** the first time you use it, open MathType's **Convert Equations** dialog once
+(MathType tab in Word → **Convert Equations**), enable **"Word 2007 and later (OMML) equations"**
+as a source type, set the target to **"MathType equations (OLE objects)"**, and leave **"Prompt
+before converting each equation"** unchecked. MathType remembers these settings afterward, so
+every future **Ctrl+Shift+M** press just works.
+
 ## Viewing results
 
 After recognition, results appear in four tabs:
@@ -127,6 +146,7 @@ Closing the window minimizes to tray. Right-click the tray icon for:
 | `Ctrl+Shift+S`   | Screen snip (global)         |
 | `Ctrl+V`         | Paste image for recognition  |
 | `Escape`         | Cancel snip                  |
+| `Ctrl+Shift+M`   | In Word: convert pasted equation to a MathType object (requires MathType) |
 
 ## Credits
 

@@ -1,7 +1,7 @@
 {
   "name": "k-mathsnip",
-  "version": "0.1.0",
-  "description": "K-MathSnip: formula snipping tool with local Pix2Text MFR, native Word equation paste, and optional PaddleOCR. Built on the open-source OpenMathpix project (MIT) by JhuoW — see THIRD_PARTY_NOTICES.md.",
+  "version": "0.2.0",
+  "description": "K-MathSnip: formula snipping tool with a bundled local formula-recognition model, native Word equation paste, and one-shortcut MathType conversion. Built on the open-source OpenMathpix project (MIT) by JhuoW — see THIRD_PARTY_NOTICES.md.",
   "main": "./out/main/index.js",
   "author": {
     "name": "Kevin Bastin",

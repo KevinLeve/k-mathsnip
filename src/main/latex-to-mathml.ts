@@ -35,6 +35,9 @@ const SYMBOL: Record<string, string> = {
   times: '×', div: '÷', pm: '±',
   leq: '≤', geq: '≥', neq: '≠', approx: '≈',
   infty: '∞', cdot: '⋅',
+  to: '→', rightarrow: '→', longrightarrow: '→',
+  leftarrow: '←', longleftarrow: '←',
+  leftrightarrow: '↔', Rightarrow: '⇒', Leftarrow: '⇐',
 };
 
 const FRAC_CMDS = new Set(['frac', 'cfrac', 'dfrac', 'tfrac']);
@@ -69,8 +72,9 @@ type Sup = { kind: 'Sup'; base: Node; sup: Node };
 type SubSup = { kind: 'SubSup'; base: Node; sub: Node; sup: Node };
 type Nary = { kind: 'Nary'; op: string; sub: Node | null; sup: Node | null; body: Node };
 type Accent = { kind: 'Accent'; base: Node; char: string };
+type Under = { kind: 'Under'; base: Node; under: Node };
 type Delim = { kind: 'Delim'; open: string; close: string; body: Node };
-type Node = Run | Seq | Frac | Sub | Sup | SubSup | Nary | Accent | Delim;
+type Node = Run | Seq | Frac | Sub | Sup | SubSup | Nary | Accent | Under | Delim;
 
 const run = (text: string, italic = true): Run => ({ kind: 'Run', text, italic });
 const emptyRun = (): Run => run('');
@@ -202,8 +206,14 @@ class Parser {
       const body = this.parseSequence(new Set(['}', ')', ']', '\\}', '=', '+', '-']));
       return { kind: 'Nary', op, sub: subNode, sup: supNode, body };
     }
+    if (name0 === 'underset') {
+      const under = this.parseGroup();
+      const base = this.parseGroup();
+      return { kind: 'Under', base, under };
+    }
     if (t === '\\mathrm' || t === '\\mbox' || t === '\\text' || t === '\\boldsymbol' ||
         t === '\\mathbf' || t === '\\operatorname') {
+      if (t === '\\operatorname' && this.peek() === '*') this.next();
       return this.parseGroup();
     }
     if ((name0 && IGNORED_CMDS.has(name0)) || t === '\\!' || t === '\\,' || t === '\\;' || t === '\\:') {
@@ -261,6 +271,11 @@ function checkNoEmptyArgs(node: Node): void {
     case 'Accent':
       if (isEmpty(node.base)) throw new LatexParseError('accent with an empty base');
       checkNoEmptyArgs(node.base);
+      break;
+    case 'Under':
+      if (isEmpty(node.base)) throw new LatexParseError('underset with an empty base');
+      checkNoEmptyArgs(node.base);
+      checkNoEmptyArgs(node.under);
       break;
     case 'Delim':
       checkNoEmptyArgs(node.body);
@@ -329,6 +344,8 @@ function emit(node: Node): string {
     }
     case 'Accent':
       return `<mml:mover accent="true">${row([emit(node.base)])}<mml:mo>${escapeXml(node.char)}</mml:mo></mml:mover>`;
+    case 'Under':
+      return `<mml:munder>${row([emit(node.base)])}${row([emit(node.under)])}</mml:munder>`;
     case 'Delim': {
       const inner = row([emit(node.body)]);
       if (!node.open && !node.close) return inner;
