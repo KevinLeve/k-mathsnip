@@ -74,13 +74,6 @@ plain LaTeX instead and tells you why — it never guesses or ships something si
   <img src="instruct/result.png" width="100%"/>
 </div>
 
-## Copy for MathType
-
-**Copy for MathType** converts the recognized LaTeX into the same Presentation MathML as Copy
-for Word, and copies it as plain clipboard text — MathType recognizes MathML pasted this way and
-turns it into a real, editable equation. Unlike Copy for Word, this is a manual button, not an
-automatic step after every snip.
-
 ## Viewing results
 
 After recognition, results appear in four tabs:
@@ -93,8 +86,8 @@ After recognition, results appear in four tabs:
 | **Image**    | The original captured screenshot.                            |
 
 **Raw LaTeX source** is expanded by default for each new result — click its heading to collapse
-or expand it. **Copy for Word**, **Copy for MathType**, and **Copy** (the active tab's format)
-are all available on every tab.
+or expand it. **Copy for Word** and **Copy** (the active tab's format) are both available on
+every tab.
 
 ## Settings
 

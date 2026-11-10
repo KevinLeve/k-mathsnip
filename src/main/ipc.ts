@@ -134,21 +134,5 @@ export function registerIpcHandlers(
     }
   });
 
-  ipcMain.handle(IPC.COPY_FOR_MATHTYPE, (_event, latex: string): { ok: true } | { ok: false; reason: string } => {
-    // MathType has no registered clipboard format we've verified against the real app the way
-    // "MathML Presentation" was confirmed against Word, but Wiris documents that MathType's own
-    // paste command auto-detects MathML in plain clipboard text and converts it to an editable
-    // equation. So this writes the same Presentation MathML as plain text rather than a custom
-    // buffer format — unlike Copy for Word, this is unverified against a real MathType install.
-    try {
-      const mathml = latexToMathml(latex);
-      clipboard.writeText(mathml);
-      return { ok: true };
-    } catch (e) {
-      if (e instanceof LatexParseError) return { ok: false, reason: e.message };
-      throw e;
-    }
-  });
-
   ipcMain.handle(IPC.CHECK_FOR_UPDATES, () => checkForUpdates());
 }

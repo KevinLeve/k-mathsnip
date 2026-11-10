@@ -81,8 +81,6 @@ const api = {
   pasteImage: (): Promise<string | null> => ipcRenderer.invoke(IPC.PASTE_IMAGE),
   copyForWord: (latex: string): Promise<{ ok: true } | { ok: false; reason: string }> =>
     ipcRenderer.invoke(IPC.COPY_FOR_WORD, latex),
-  copyForMathType: (latex: string): Promise<{ ok: true } | { ok: false; reason: string }> =>
-    ipcRenderer.invoke(IPC.COPY_FOR_MATHTYPE, latex),
 
   // Updates
   checkForUpdates: (): Promise<{

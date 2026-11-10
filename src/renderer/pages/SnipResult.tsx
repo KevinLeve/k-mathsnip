@@ -51,16 +51,6 @@ export default function SnipResult() {
     }
   };
 
-  const copyForMathType = async () => {
-    if (!ocrResult) return;
-    const result = await window.api.copyForMathType(ocrResult.latex);
-    if (result.ok) {
-      showToast('Copied — paste into MathType for a real editable equation.');
-    } else {
-      showToast(`Could not build a MathType equation from this (${result.reason}). Try Copy LaTeX instead.`);
-    }
-  };
-
   const retry = () => {
     if (currentImage) void recognizeImage(currentImage);
   };
@@ -93,13 +83,6 @@ export default function SnipResult() {
               title="Paste directly into Word as a real, editable equation (Ctrl+V)"
             >
               {t('Copy for Word')}
-            </button>
-            <button
-              onClick={copyForMathType}
-              className="px-3 py-1 text-sm border border-brand-300 dark:border-brand-700 text-brand-700 dark:text-brand-300 rounded hover:bg-brand-50 dark:hover:bg-brand-950 transition-colors"
-              title="Paste directly into MathType as a real, editable equation"
-            >
-              {t('Copy for MathType')}
             </button>
             <button
               onClick={() => copyResult(activeTab as 'latex' | 'markdown' | 'text')}

@@ -107,7 +107,6 @@ const chinese = {
   'Processing the formula on this device.': '正在本机处理公式。',
   Copy: '复制',
   'Copy for Word': '复制为 Word 公式',
-  'Copy for MathType': '复制为 MathType 公式',
   'Check for Updates': '检查更新',
   'Checking…': '正在检查…',
   'Built in and ready — no setup needed.': '已内置，无需设置。',
