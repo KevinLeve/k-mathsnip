@@ -50,6 +50,11 @@ const chinese = {
   Dark: '深色',
   System: '跟随系统',
   'History Limit': '历史记录数量上限',
+  'Convert to MathType': '转换为 MathType',
+  'In Word, after pasting an equation (Ctrl+V), press Ctrl+Shift+M to convert it into a real MathType object. Requires MathType to be installed.':
+    '在 Word 中粘贴公式后（Ctrl+V），按 Ctrl+Shift+M 即可将其转换为真正的 MathType 对象。需要先安装 MathType。',
+  'One-time setup: open MathType\'s Convert Equations dialog once (MathType tab in Word), enable "Word 2007 and later (OMML) equations" as a source, set the target to "MathType equations (OLE objects)", and uncheck "Prompt before converting each equation."':
+    '首次使用前的一次性设置：在 Word 的 MathType 选项卡中打开一次“转换公式”对话框，将来源类型勾选为“Word 2007 及更高版本 (OMML) 公式”，目标格式设为“MathType 公式 (OLE 对象)”，并取消勾选“转换前逐个确认”。',
   About: '关于',
   'Local Formula Model': '本地公式模型',
   'Download Pix2Text MFR-1.5 once (about 120 MB), or select an existing model folder. Files are verified and the model is tested automatically before it becomes available for offline recognition on your CPU.':

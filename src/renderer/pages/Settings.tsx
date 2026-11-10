@@ -135,8 +135,26 @@ export default function Settings() {
         </label>
       </section>
       <section>
+        <h2 className="text-lg font-semibold mb-4">{t('Convert to MathType')}</h2>
+        <p className="text-sm mb-2">
+          <kbd className="px-1.5 py-0.5 text-xs font-semibold border border-gray-300 dark:border-gray-600 rounded bg-gray-100 dark:bg-gray-800">
+            Ctrl+Shift+M
+          </kbd>
+        </p>
+        <p className="text-xs text-gray-500">
+          {t(
+            'In Word, after pasting an equation (Ctrl+V), press Ctrl+Shift+M to convert it into a real MathType object. Requires MathType to be installed.',
+          )}
+        </p>
+        <p className="text-xs text-gray-500 mt-2">
+          {t(
+            'One-time setup: open MathType\'s Convert Equations dialog once (MathType tab in Word), enable "Word 2007 and later (OMML) equations" as a source, set the target to "MathType equations (OLE objects)", and uncheck "Prompt before converting each equation."',
+          )}
+        </p>
+      </section>
+      <section>
         <h2 className="text-lg font-semibold mb-2">{t('About')}</h2>
-        <p className="text-sm text-gray-500 mb-2">K-MathSnip v0.1.0</p>
+        <p className="text-sm text-gray-500 mb-2">K-MathSnip v0.2.0</p>
         <button
           type="button"
           onClick={checkForUpdates}
