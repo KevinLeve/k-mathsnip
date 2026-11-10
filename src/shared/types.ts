@@ -28,6 +28,7 @@ export const IPC = {
 
   PASTE_IMAGE: 'clipboard:paste-image',
   COPY_FOR_WORD: 'clipboard:copy-for-word',
+  COPY_FOR_MATHTYPE: 'clipboard:copy-for-mathtype',
 
   CHECK_FOR_UPDATES: 'update:check',
 } as const;
