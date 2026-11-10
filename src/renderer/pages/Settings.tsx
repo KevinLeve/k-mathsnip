@@ -28,6 +28,11 @@ export default function Settings() {
   const [updateCheck, setUpdateCheck] = useState<
     { status: 'idle' } | { status: 'checking' } | { status: 'done'; label: string }
   >({ status: 'idle' });
+  const [appVersion, setAppVersion] = useState<string | null>(null);
+
+  useEffect(() => {
+    window.api.getAppVersion().then(setAppVersion);
+  }, []);
 
   const checkForUpdates = async () => {
     setUpdateCheck({ status: 'checking' });
@@ -154,7 +159,9 @@ export default function Settings() {
       </section>
       <section>
         <h2 className="text-lg font-semibold mb-2">{t('About')}</h2>
-        <p className="text-sm text-gray-500 mb-2">K-MathSnip v0.2.0</p>
+        <p className="text-sm text-gray-500 mb-2">
+          K-MathSnip {appVersion ? `v${appVersion}` : ''}
+        </p>
         <button
           type="button"
           onClick={checkForUpdates}

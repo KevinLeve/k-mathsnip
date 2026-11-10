@@ -30,6 +30,7 @@ export const IPC = {
   COPY_FOR_WORD: 'clipboard:copy-for-word',
 
   CHECK_FOR_UPDATES: 'update:check',
+  GET_APP_VERSION: 'app:version',
 } as const;
 
 export type OutputFormat = 'latex' | 'markdown' | 'text';

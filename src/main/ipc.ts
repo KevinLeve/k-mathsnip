@@ -1,4 +1,4 @@
-import { ipcMain, clipboard, BrowserWindow, dialog, shell } from 'electron';
+import { app, ipcMain, clipboard, BrowserWindow, dialog, shell } from 'electron';
 import { IPC } from '../shared/types';
 import type { AppSettings } from '../shared/types';
 import { getSettings } from './store';
@@ -135,4 +135,5 @@ export function registerIpcHandlers(
   });
 
   ipcMain.handle(IPC.CHECK_FOR_UPDATES, () => checkForUpdates());
+  ipcMain.handle(IPC.GET_APP_VERSION, () => app.getVersion());
 }

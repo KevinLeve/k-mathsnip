@@ -88,6 +88,7 @@ const api = {
     version?: string;
     error?: string;
   }> => ipcRenderer.invoke(IPC.CHECK_FOR_UPDATES),
+  getAppVersion: (): Promise<string> => ipcRenderer.invoke(IPC.GET_APP_VERSION),
 };
 
 contextBridge.exposeInMainWorld('api', api);
